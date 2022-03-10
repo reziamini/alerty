@@ -30,7 +30,7 @@
     "extra": {
         "laravel" : {
             "providers" : [
-                "EasyPanel\\EasyPanelServiceProvider"
+                "Alerty\\AlertyServiceProvider"
             ]
         }
     },
