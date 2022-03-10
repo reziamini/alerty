@@ -1,6 +1,9 @@
+
 # Alerty
 
 Alerty is a smell query identifier which gives you a GUI to monitor them.
+
+![alerty](https://user-images.githubusercontent.com/29504334/157667001-085944f8-edec-49a8-9ce5-ac24760dbfdc.png)
 
 ## Installation:
 To install Alerty, you need to execute this command using Composer:
