@@ -14,6 +14,7 @@ use Alerty\Pipes\LimitWithoutOrdering;
 use Alerty\Pipes\UpdateWithoutWhere;
 use Alerty\Pipes\SelectExists;
 use Alerty\Pipes\SelectAllRows;
+use Illuminate\Support\Facades\Schema;
 
 class QueryHandler
 {
@@ -32,6 +33,10 @@ class QueryHandler
 
     public function handle(QueryExecuted $query)
     {
+        if (! Schema::hasTable('query_entries')){
+            return;
+        }
+
         if (Str::of($query->sql)->lower()->contains(['query_entries', 'telescope_entries'])){
             return;
         }
