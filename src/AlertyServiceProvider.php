@@ -1,0 +1,32 @@
+<?php
+
+namespace Alerty;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Events\QueryExecuted;
+use Alerty\Services\QueryHandler;
+use Alerty\Event\BadQueryExecuted;
+use Alerty\Listeners\ShowAlertForBadQuery;
+use Livewire\Livewire;
+use Alerty\Http\Livewire\Query\Read;
+use Alerty\Http\Livewire\Query\Single;
+use Illuminate\Support\Facades\Route;
+
+class AlertyServiceProvider extends ServiceProvider
+{
+
+    public function boot()
+    {
+        Event::listen(QueryExecuted::class, [QueryHandler::class, 'handle']);
+        Event::listen(BadQueryExecuted::class, [ShowAlertForBadQuery::class, 'handle']);
+
+        $this->loadMigrationsFrom(__DIR__."/../database/migrations");
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'alerty');
+
+        Route::middleware('web')
+            ->group(__DIR__.'/route.php');
+    }
+
+}
