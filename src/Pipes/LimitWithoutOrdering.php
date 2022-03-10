@@ -17,6 +17,10 @@ class LimitWithoutOrdering
             return;
         }
 
+        if (preg_match('/where(.*?)`id`\s?=/i', $query->query)){
+            return;
+        }
+
         if (\Str::of($query->query)->contains("order by")){
             return;
         }
