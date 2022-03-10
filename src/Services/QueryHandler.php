@@ -32,7 +32,7 @@ class QueryHandler
 
     public function handle(QueryExecuted $query)
     {
-        if (Str::of($query->sql)->lower()->contains(['query_entries', 'telescope_entries'])){
+        if (Str::of($query->sql)->lower()->contains(['query_entries', 'telescope_entries', 'information_schema'])){
             return;
         }
 
