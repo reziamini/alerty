@@ -12,14 +12,17 @@ use Livewire\Livewire;
 use Alerty\Http\Livewire\Query\Read;
 use Alerty\Http\Livewire\Query\Single;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 
 class AlertyServiceProvider extends ServiceProvider
 {
 
     public function boot()
     {
-        Event::listen(QueryExecuted::class, [QueryHandler::class, 'handle']);
-        Event::listen(BadQueryExecuted::class, [ShowAlertForBadQuery::class, 'handle']);
+        if (Schema::hasTable('query_entries')){
+            Event::listen(QueryExecuted::class, [QueryHandler::class, 'handle']);
+            Event::listen(BadQueryExecuted::class, [ShowAlertForBadQuery::class, 'handle']);
+        }
 
         $this->loadMigrationsFrom(__DIR__."/../database/migrations");
 
