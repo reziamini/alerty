@@ -78,9 +78,13 @@ class NormalizedQuery
 
     private function hasTransaction($event)
     {
-        $reflectionObject = new \ReflectionObject($event->connection);
-        $property = $reflectionObject->getProperty('transactions');
-        return $property->getValue($event->connection) != 0;
+        try {
+            $reflectionObject = new \ReflectionObject($event->connection);
+            $property = $reflectionObject->getProperty('transactions');
+            return $property->getValue($event->connection) != 0;
+        } catch (\Exception $exception){
+            return false;
+        }
     }
 
 }
