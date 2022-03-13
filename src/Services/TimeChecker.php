@@ -11,10 +11,14 @@ class TimeChecker
         }
 
         if ($time <= 15){
-            return 'bg-green-200 text-gray-500';
+            return 'bg-green-300 text-gray-500';
         }
 
         if ($time <= 35){
+            return 'bg-yellow-200 text-gray-500';
+        }
+
+        if ($time <= 60){
             return 'bg-red-200 text-gray-500';
         }
 
