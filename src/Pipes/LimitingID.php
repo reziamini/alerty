@@ -13,7 +13,7 @@ class LimitingID
             return;
         }
 
-        if (\Str::of($query->query)->contains("limit")){
+        if (\Str::of($query->query)->lower()->contains("limit")){
             return;
         }
 

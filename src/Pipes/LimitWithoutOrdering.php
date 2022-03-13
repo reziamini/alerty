@@ -13,7 +13,7 @@ class LimitWithoutOrdering
             return;
         }
 
-        if (! \Str::of($query->query)->contains("limit")){
+        if (! \Str::of($query->query)->lower()->contains("limit")){
             return;
         }
 
@@ -21,7 +21,7 @@ class LimitWithoutOrdering
             return;
         }
 
-        if (\Str::of($query->query)->contains("order by")){
+        if (\Str::of($query->query)->lower()->contains("order by")){
             return;
         }
 
