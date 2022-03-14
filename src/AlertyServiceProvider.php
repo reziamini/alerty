@@ -34,11 +34,13 @@ class AlertyServiceProvider extends ServiceProvider
         /*
          * Views
          */
+
         $this->setupViews();
 
         /*
          * Routes
          */
+
         $this->setupRoutes();
     }
 
