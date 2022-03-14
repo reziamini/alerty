@@ -8,9 +8,6 @@ use Illuminate\Database\Events\QueryExecuted;
 use Alerty\Services\QueryHandler;
 use Alerty\Event\BadQueryExecuted;
 use Alerty\Listeners\ShowAlertForBadQuery;
-use Livewire\Livewire;
-use Alerty\Http\Livewire\Query\Read;
-use Alerty\Http\Livewire\Query\Single;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
