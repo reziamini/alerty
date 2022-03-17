@@ -31,7 +31,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <pre style="background: none">
                                             <code class="language-sql">
-                                                {{ \Illuminate\Support\Str::limit($query->data['bindedQuery'], 90, '..') }}
+                                                {{ \Illuminate\Support\Str::limit($query->data['bindedQuery'], 60, '..') }}
                                             </code>
                                         </pre>
                                     </td>
