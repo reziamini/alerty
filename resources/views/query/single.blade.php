@@ -56,7 +56,7 @@
                         Smell
                     </div>
                     <div class="w-3/4 p-4 text-gray-600">
-                        {{ $query->type }}
+                        {{ implode(' ', \Illuminate\Support\Str::ucsplit($query->type)) }}
                     </div>
                 </div>
 

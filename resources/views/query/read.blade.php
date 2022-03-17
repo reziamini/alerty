@@ -43,7 +43,7 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-orange-400">
-                                        {{ $query->type }}
+                                        {{ implode(' ', \Illuminate\Support\Str::ucsplit($query->type)) }}
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-orange-400">
