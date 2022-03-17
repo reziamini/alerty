@@ -8,13 +8,13 @@ use Alerty\Event\BadQueryExecuted;
 class WhereLike
 {
 
-    public function check(NormalizedQuery $query)
+    public static function check(NormalizedQuery $query)
     {
         if (! \Str::of($query->query)->lower()->contains('select')){
             return;
         }
 
-        if (! preg_match('/where ".*?" like %.*?%/i', $query->bindedQuery)){
+        if (! preg_match('/where `.*?` like \'%.*?%\'/i', $query->bindedQuery)){
             return;
         }
 
