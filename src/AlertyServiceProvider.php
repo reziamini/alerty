@@ -27,6 +27,8 @@ class AlertyServiceProvider extends ServiceProvider
         $this->loadViews();
 
         $this->registerRoutes();
+
+        $this->registerPublishes();
     }
 
     private function registerListeners()
@@ -52,6 +54,12 @@ class AlertyServiceProvider extends ServiceProvider
         $middlewares = array_merge(['web'], config('alerty.middlewares') ?: []);
 
         Route::middleware($middlewares)->group(__DIR__.'/route.php');
+    }
+
+
+    private function registerPublishes()
+    {
+        $this->publishes([__DIR__ . '/alerty_config.php' => config_path('alerty.php'),], 'alerty-config');
     }
 
 }
