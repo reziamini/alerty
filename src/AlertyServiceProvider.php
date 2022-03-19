@@ -16,16 +16,16 @@ class AlertyServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->setupEventListeners();
+        $this->registerListeners();
 
-        $this->setupMigrations();
+        $this->loadMigrations();
 
-        $this->setupViews();
+        $this->loadViews();
 
-        $this->setupRoutes();
+        $this->registerRoutes();
     }
 
-    private function setupEventListeners()
+    private function registerListeners()
     {
         if ( ! $this->app->runningInConsole() && Schema::hasTable('query_entries') ) {
             Event::listen(QueryExecuted::class, [QueryHandler::class, 'handle']);
@@ -33,17 +33,17 @@ class AlertyServiceProvider extends ServiceProvider
         }
     }
 
-    private function setupMigrations()
+    private function loadMigrations()
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
-    private function setupViews()
+    private function loadViews()
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'alerty');
     }
 
-    private function setupRoutes()
+    private function registerRoutes()
     {
         Route::middleware('web')->group(__DIR__.'/route.php');
     }
