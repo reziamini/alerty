@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Schema;
 
 class AlertyServiceProvider extends ServiceProvider
 {
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__.'/alerty_config.php', 'alerty');
+    }
 
     public function boot()
     {
@@ -45,7 +49,9 @@ class AlertyServiceProvider extends ServiceProvider
 
     private function registerRoutes()
     {
-        Route::middleware('web')->group(__DIR__.'/route.php');
+        $middlewares = array_merge(['web'], config('alerty.middlewares') ?: []);
+
+        Route::middleware($middlewares)->group(__DIR__.'/route.php');
     }
 
 }
