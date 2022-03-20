@@ -52,8 +52,9 @@ class AlertyServiceProvider extends ServiceProvider
     private function registerRoutes()
     {
         $middlewares = array_merge(['web'], config('alerty.middlewares') ?: []);
+        $prefix = config('alerty.route_prefix') ?: 'alerty';
 
-        Route::middleware($middlewares)->group(__DIR__.'/route.php');
+        Route::middleware($middlewares)->prefix($prefix)->group(__DIR__.'/route.php');
     }
 
 
