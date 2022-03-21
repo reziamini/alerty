@@ -5,7 +5,7 @@ namespace Alerty\Commands;
 use Illuminate\Console\Command;
 use Alerty\Models\QueryEntry;
 
-class CleanerCommand extends Command
+class ClearCommand extends Command
 {
     protected $signature = 'alerty:clear';
     protected $description = 'Clean the alerts from database.';
@@ -15,7 +15,7 @@ class CleanerCommand extends Command
         $status = $this->confirm("Do you really want to clean the alerts?", true);
 
         if (! $status){
-            $this->info("It was canceled!");
+            $this->warn("It was canceled!");
             return;
         }
 

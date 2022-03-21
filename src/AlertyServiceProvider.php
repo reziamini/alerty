@@ -10,7 +10,7 @@ use Alerty\Event\BadQueryExecuted;
 use Alerty\Listeners\ShowAlertForBadQuery;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
-use Alerty\Commands\CleanerCommand;
+use Alerty\Commands\ClearCommand;
 
 class AlertyServiceProvider extends ServiceProvider
 {
@@ -31,7 +31,7 @@ class AlertyServiceProvider extends ServiceProvider
 
         $this->registerPublishes();
 
-        $this->commands(CleanerCommand::class);
+        $this->commands(ClearCommand::class);
     }
 
     private function registerListeners()
