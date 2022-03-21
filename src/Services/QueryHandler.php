@@ -15,6 +15,7 @@ use Alerty\Pipes\UpdateWithoutWhere;
 use Alerty\Pipes\SelectExists;
 use Alerty\Pipes\SelectAllRows;
 use Alerty\Pipes\WhereLike;
+use Alerty\Pipes\GroupWheres;
 
 class QueryHandler
 {
@@ -29,7 +30,8 @@ class QueryHandler
         LimitWithoutOrdering::class,
         UpdateWithoutWhere::class,
         SelectExists::class,
-        WhereLike::class
+        WhereLike::class,
+        GroupWheres::class
     ];
 
     public function handle(QueryExecuted $query)
